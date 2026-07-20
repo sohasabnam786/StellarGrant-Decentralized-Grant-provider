@@ -1,5 +1,10 @@
 # 🚀 StellarGrant — Decentralized Grant Platform
 
+[![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Soroban Smart Contracts](https://img.shields.io/badge/Soroban-Smart_Contracts-blue?style=flat&logo=rust&logoColor=white)](https://stellar.org/soroban)
+[![Stellar Network](https://img.shields.io/badge/Stellar-Testnet-success?style=flat&logo=stellar&logoColor=white)](https://stellar.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A **production-ready**, end-to-end decentralized grant and milestone-based funding platform built with Next.js and **Soroban Smart Contracts** on the **Stellar Testnet**. The platform enables organizations to post grant programs, developers/contributors to fund them, and participants to automatically earn **GRNT reward tokens** through inter-contract minting — all governed transparently by Soroban smart contracts.
 
 🌐 **Live Deployment**: [https://stellar-grant-decentralized-grant-p.vercel.app/](https://stellar-grant-decentralized-grant-p.vercel.app/)
