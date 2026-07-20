@@ -36,7 +36,7 @@ export function Sidebar() {
         </div>
         <div className="flex-1">
           <h1 className="font-bold text-base text-foreground">StellarGrant</h1>
-          <p className="text-xs text-muted-foreground">Platform</p>
+          <p className="text-xs text-muted-foreground font-mono uppercase tracking-wider text-secondary">Soroban Protocol</p>
         </div>
       </div>
 
