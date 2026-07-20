@@ -43,10 +43,10 @@ const BENEFITS = [
 ];
 
 const STATS = [
-  { label: "Active Grants", value: "8", suffix: "" },
-  { label: "Total Allocated", value: "75,000", suffix: " XLM" },
-  { label: "Network", value: "Testnet", suffix: "" },
-  { label: "Reward Token", value: "GRNT", suffix: "" },
+  { label: "Active Grant Pools", value: "12", suffix: "" },
+  { label: "Total Funding Committed", value: "120,000", suffix: " XLM" },
+  { label: "Avg. Transaction Fee", value: "< 0.0001", suffix: " XLM" },
+  { label: "GRNT Reward Rate", value: "100", suffix: "%" },
 ];
 
 export default function HomePage() {
