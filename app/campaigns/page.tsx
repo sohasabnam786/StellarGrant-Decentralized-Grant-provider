@@ -91,7 +91,15 @@ export default function CampaignsPage() {
                   : "bg-white/[0.02] border-white/5 text-muted-foreground hover:bg-white/[0.05] hover:text-foreground"
               )}
             >
-              {status === "Withdrawn" ? "Claimed" : status === "Active" ? "Open" : status}
+              {status === "Withdrawn"
+                ? "Claimed"
+                : status === "Active"
+                ? "Open"
+                : status === "Expired"
+                ? "Closed"
+                : status === "Successful"
+                ? "Funded"
+                : status}
             </button>
           ))}
         </div>
