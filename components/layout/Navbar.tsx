@@ -36,8 +36,10 @@ export function Navbar() {
         </Link>
 
         {/* Desktop: page breadcrumb */}
-        <div className="hidden lg:flex items-center gap-2 text-sm">
-          <span className="text-muted-foreground">
+        <div className="hidden lg:flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+          <span>StellarGrant</span>
+          <span className="text-white/20">/</span>
+          <span className="text-foreground">
             {NAV_ITEMS.find(
               (item) =>
                 item.href === pathname ||
