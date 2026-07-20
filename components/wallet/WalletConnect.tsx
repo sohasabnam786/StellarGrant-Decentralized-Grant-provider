@@ -7,7 +7,7 @@ import { cn, shortAddress, copyToClipboard, explorerAccountUrl, explorerContract
 import { STELLAR_CONFIG } from "@/lib/stellar/config";
 
 export function WalletConnect() {
-  const { isConnected, address, balance, isConnecting, error, connect, disconnect } = useWallet();
+  const { isConnected, address, balance, rewardBalance, isConnecting, error, connect, disconnect } = useWallet();
   const [showDropdown, setShowDropdown] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -124,15 +124,22 @@ export function WalletConnect() {
               </div>
             </div>
 
-            {/* Balance */}
-            <div className="px-4 py-3 border-b border-white/[0.06]">
-              <p className="text-xs text-muted-foreground mb-1">Balance</p>
-              <p className="text-2xl font-bold gradient-text">
-                {balance ? parseFloat(balance).toFixed(4) : "—"}{" "}
-                <span className="text-base font-normal text-muted-foreground">
-                  XLM
-                </span>
-              </p>
+            {/* Balances (XLM & GRNT) */}
+            <div className="px-4 py-3 border-b border-white/[0.06] space-y-3">
+              <div>
+                <p className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground mb-0.5">XLM Balance</p>
+                <p className="text-xl font-bold text-foreground">
+                  {balance ? parseFloat(balance).toFixed(4) : "—"}{" "}
+                  <span className="text-xs font-normal text-muted-foreground">XLM</span>
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-bold tracking-wider text-secondary mb-0.5">GRNT Rewards</p>
+                <p className="text-xl font-black gradient-text">
+                  {rewardBalance !== null ? (rewardBalance / 10_000_000).toFixed(2) : "—"}{" "}
+                  <span className="text-xs font-normal text-muted-foreground font-sans">GRNT</span>
+                </p>
+              </div>
             </div>
 
             {/* Actions */}
