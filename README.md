@@ -2,7 +2,7 @@
 
 A **production-ready**, end-to-end decentralized grant and milestone-based funding platform built with Next.js and **Soroban Smart Contracts** on the **Stellar Testnet**. The platform enables organizations to post grant programs, developers/contributors to fund them, and participants to automatically earn **GRNT reward tokens** through inter-contract minting — all governed transparently by Soroban smart contracts.
 
-🌐 **Live Deployment**: [https://stellargrant-protocol.vercel.app/](https://stellargrant-protocol.vercel.app/)
+🌐 **Live Deployment**: [https://stellar-grant-decentralized-grant-p.vercel.app/](https://stellar-grant-decentralized-grant-p.vercel.app/)
 
 ---
 

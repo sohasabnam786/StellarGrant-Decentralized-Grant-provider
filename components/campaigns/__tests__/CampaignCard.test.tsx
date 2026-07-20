@@ -78,9 +78,9 @@ describe('CampaignCard', () => {
     expect(screen.getByText('47.5% funded')).toBeInTheDocument();
   });
 
-  it('shows "Active" badge for an active campaign', () => {
+  it('shows "Open" badge for an active campaign', () => {
     render(<CampaignCard campaign={makeCampaign({ status: 'Active' })} />);
-    expect(screen.getByText('Active')).toBeInTheDocument();
+    expect(screen.getByText('Open')).toBeInTheDocument();
   });
 
   it('shows "Funded ✓" badge for a successful campaign', () => {
@@ -92,20 +92,20 @@ describe('CampaignCard', () => {
     expect(screen.getByText('Funded ✓')).toBeInTheDocument();
   });
 
-  it('shows "Expired" badge for an expired campaign', () => {
+  it('shows "Closed" badge for an expired campaign', () => {
     render(
       <CampaignCard
         campaign={makeCampaign({ status: 'Expired', isExpired: true, daysLeft: 0 })}
       />
     );
-    expect(screen.getByText('Expired')).toBeInTheDocument();
+    expect(screen.getByText('Closed')).toBeInTheDocument();
   });
 
-  it('shows "Completed" badge for a withdrawn campaign', () => {
+  it('shows "Claimed" badge for a withdrawn campaign', () => {
     render(
       <CampaignCard campaign={makeCampaign({ status: 'Withdrawn', progressPercent: 100 })} />
     );
-    expect(screen.getByText('Completed')).toBeInTheDocument();
+    expect(screen.getByText('Claimed')).toBeInTheDocument();
   });
 
   it('has a role="button" for accessibility', () => {

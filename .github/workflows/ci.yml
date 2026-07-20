@@ -1,4 +1,4 @@
-name: CI — CrowdFund Protocol
+name: CI — StellarGrant
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
             ~/.cargo/registry
             ~/.cargo/git
             target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: |
             ${{ runner.os }}-cargo-
 
@@ -46,16 +46,16 @@ jobs:
       - name: Build WASM (release)
         run: |
           cargo build --target wasm32-unknown-unknown --release \
-            --package crowdfund \
-            --package reward_token
+            --package stellar_grant \
+            --package grant_token
 
       - name: Upload WASM artifacts
         uses: actions/upload-artifact@v4
         with:
           name: contract-wasm
           path: |
-            target/wasm32-unknown-unknown/release/crowdfund.wasm
-            target/wasm32-unknown-unknown/release/reward_token.wasm
+            target/wasm32-unknown-unknown/release/stellar_grant.wasm
+            target/wasm32-unknown-unknown/release/grant_token.wasm
           retention-days: 7
 
   # ── Job 2: Frontend Tests & Build ────────────────────────────────────────────
@@ -74,7 +74,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Lint TypeScript
         run: npm run lint
@@ -85,9 +85,10 @@ jobs:
           NEXT_PUBLIC_STELLAR_NETWORK: testnet
           NEXT_PUBLIC_STELLAR_RPC_URL: https://soroban-testnet.stellar.org
           NEXT_PUBLIC_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
-          NEXT_PUBLIC_CROWDFUND_CONTRACT_ID: CD6P3Z3FYISWUHBJ2PZYBUW7FYPGCTUTNBTHVE3T4XJ3KKMLKWF4CKPY
+          NEXT_PUBLIC_CROWDFUND_CONTRACT_ID: CAX62JNN55R56Z75BGCEFSLNT36MQ24DMLBRORV5IPBKLJZN2653J5TG
+          NEXT_PUBLIC_REWARD_TOKEN_CONTRACT_ID: CAK6ZT26B4ZQIN3C66EZGHHSJOGFEY32CY56BNZSFNZ5QN2OZHYEF34U
           NEXT_PUBLIC_HORIZON_URL: https://horizon-testnet.stellar.org
-          NEXT_PUBLIC_DEPLOYER_ADDRESS: GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX
+          NEXT_PUBLIC_DEPLOYER_ADDRESS: GBFRDG5ISAN5TRSFYF3RYP2ODFNKRPDBNZTN7SOSAIJA6JOBNMDN3GG2
           NEXT_PUBLIC_NATIVE_TOKEN_ADDRESS: CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC
 
       - name: Build production bundle
@@ -96,9 +97,10 @@ jobs:
           NEXT_PUBLIC_STELLAR_NETWORK: testnet
           NEXT_PUBLIC_STELLAR_RPC_URL: https://soroban-testnet.stellar.org
           NEXT_PUBLIC_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
-          NEXT_PUBLIC_CROWDFUND_CONTRACT_ID: CD6P3Z3FYISWUHBJ2PZYBUW7FYPGCTUTNBTHVE3T4XJ3KKMLKWF4CKPY
+          NEXT_PUBLIC_CROWDFUND_CONTRACT_ID: CAX62JNN55R56Z75BGCEFSLNT36MQ24DMLBRORV5IPBKLJZN2653J5TG
+          NEXT_PUBLIC_REWARD_TOKEN_CONTRACT_ID: CAK6ZT26B4ZQIN3C66EZGHHSJOGFEY32CY56BNZSFNZ5QN2OZHYEF34U
           NEXT_PUBLIC_HORIZON_URL: https://horizon-testnet.stellar.org
-          NEXT_PUBLIC_DEPLOYER_ADDRESS: GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX
+          NEXT_PUBLIC_DEPLOYER_ADDRESS: GBFRDG5ISAN5TRSFYF3RYP2ODFNKRPDBNZTN7SOSAIJA6JOBNMDN3GG2
           NEXT_PUBLIC_NATIVE_TOKEN_ADDRESS: CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC
 
   # ── Job 3: Security Audit ─────────────────────────────────────────────────────
